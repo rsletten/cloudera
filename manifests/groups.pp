@@ -11,6 +11,8 @@
 # Sample Usage:
 #
 
+class clouderagroups {
+
 group { 'hue':
   ensure => present,
   gid    => '486'
@@ -76,3 +78,4 @@ group { 'cloudera-scm':
   gid    => '498'
 }
 
+}

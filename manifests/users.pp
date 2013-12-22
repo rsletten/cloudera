@@ -10,6 +10,7 @@
 #
 # Sample Usage:
 #
+class clouderausers { 
 
 user { 'hue':
   ensure     => present,
@@ -139,4 +140,6 @@ user { 'cloudera-scm':
   home       => '/var/run/cloudera-scm-server',
   managehome => true,
   comment    => 'Cloudera Manager'
+}
+
 }

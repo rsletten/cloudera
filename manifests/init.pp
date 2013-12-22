@@ -11,5 +11,6 @@
 # Sample Usage:
 #
 class cloudera {
-  include users
+  Class['clouderagroups'] ->
+  Class['clouderausers'] ->
 }
