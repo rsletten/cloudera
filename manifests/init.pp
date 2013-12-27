@@ -13,209 +13,63 @@
 class cloudera {
 }
 
-class cloudera::groups {
-
-  group { 'hue':
-    ensure => present,
-    gid    => '486'
-  }
-
-  group { 'hbase':
-    ensure => present,
-    gid    => '487'
-  }
-
-  group { 'oozie':
-    ensure => present,
-    gid    => '488'
-  }
-
-  group { 'sqoop2':
-    ensure => present,
-    gid    => '489'
-  }
-
-  group { 'hive':
-    ensure => present,
-    gid    => '490'
-  }
-
-  group { 'yarn':
-    ensure => present,
-    gid    => '491'
-  }
-
-  group { 'sqoop':
-    ensure => present,
-    gid    => '492'
-  }
-
-  group { 'mapred':
-    ensure => present,
-    gid    => '493'
-  }
-
-  group { 'httpfs':
-    ensure => present,
-    gid    => '494'
-  }
-
-  group { 'zookeeper':
-    ensure => present,
-    gid    => '495'
-  }
-
-  group { 'hdfs':
-    ensure => present,
-    gid    => '496'
-  }
-
-  group { 'flume':
-    ensure => present,
-    gid    => '497'
-  }
-
-  group { 'cloudera-scm':
-    ensure => present,
-    gid    => '498'
-  }
-
+class hadoopgroups::virtual {
+  @group { 'hue': gid => '1000', ensure => present }
+  @group { 'hbase': gid => '1001', ensure => present }
+  @group { 'oozie': gid => '1002', ensure => present }
+  @group { 'sqoop2': gid => '1003', ensure => present }
+  @group { 'hive': gid => '1004', ensure => present }
+  @group { 'yarn': gid => '1005', ensure => present }
+  @group { 'sqoop': gid => '1006', ensure => present }
+  @group { 'mapred': gid => '1007', ensure => present }
+  @group { 'httpfs': gid => '1008', ensure => present }
+  @group { 'zookeeper': gid => '1009', ensure => present }
+  @group { 'hdfs': gid => '1010', ensure => present }
+  @group { 'flume': gid => '1011', ensure => present }
 }
 
-class cloudera::users { 
-
-  user { 'hue':
-    ensure     => present,
-    uid        => '486',
-    gid        => '486',
-    shell      => '/bin/false',
-    home       => '/usr/share/hue',
-    managehome => true,
-    comment    => 'Hue'
-  }
-
-  user { 'hbase':
-    ensure     => present,
-    uid        => '487',
-    gid        => '487',
-    shell      => '/bin/false',
-    home       => '/var/run/hue',
-    managehome => true,
-    comment    => 'HBase'
-  }
-
-  user { 'oozie':
-    ensure     => present,
-    uid        => '488',
-    gid        => '488',
-    shell      => '/bin/false',
-    home       => '/var/lib/oozie',
-    managehome => true,
-    comment    => 'Oozie'
-  }
-
-  user { 'sqoop2':
-    ensure     => present,
-    uid        => '489',
-    gid        => '489',
-    shell      => '/sbin/nologin',
-    home       => '/var/run/sqoop2',
-    managehome => true,
-    comment    => 'Sqoop 2 User'
-  }
-
-  user { 'hive':
-    ensure     => present,
-    uid        => '490',
-    gid        => '490',
-    shell      => '/bin/false',
-    home       => '/var/lib/hive',
-    managehome => true,
-    comment    => 'Hive'
-  }
-
-  user { 'yarn':
-    ensure     => present,
-    uid        => '491',
-    gid        => '491',
-    shell      => '/bin/bash',
-    home       => '/var/lib/hadoop-yarn',
-    managehome => true,
-    comment    => 'Hadoop Yarn'
-  }
-
-  user { 'sqoop':
-    ensure     => present,
-    uid        => '492',
-    gid        => '492',
-    shell      => '/bin/false',
-    home       => '/var/lib/sqoop',
-    managehome => true,
-    comment    => 'Sqoop'
-  }
-
-  user { 'mapred':
-    ensure     => present,
-    uid        => '493',
-    gid        => '493',
-    shell      => '/bin/bash',
-    home       => '/var/lib/hadoop-mapreduce',
-    managehome => true,
-    comment    => 'Hadoop MapReduce'
-  }
-
-  user { 'httpfs':
-    ensure     => present,
-    uid        => '494',
-    gid        => '494',
-    shell      => '/bin/bash',
-    home       => '/var/run/hadoop-httpfs',
-    managehome => true,
-    comment    => 'Hadoop HTTPFS'
-  }
-
-  user { 'zookeeper':
-    ensure     => present,
-    uid        => '495',
-    gid        => '495',
-    shell      => '/bin/false',
-    home       => '/var/run/zookeeper',
-    managehome => true,
-    comment    => 'Zookeeper'
-  }
-
-  user { 'hdfs':
-    ensure     => present,
-    uid        => '496',
-    gid        => '496',
-    shell      => '/bin/bash',
-    home       => '/var/lib/hadoop-hdfs',
-    managehome => true,
-    comment    => 'Hadoop HDFS'
-  }
-
-  user { 'flume':
-    ensure     => present,
-    uid        => '497',
-    gid        => '497',
-    shell      => '/bin/false',
-    home       => '/var/lib/flume-ng',
-    managehome => true,
-    comment    => 'Flume'
-  }
-
-  user { 'cloudera-scm':
-    ensure     => present,
-    uid        => '498',
-    gid        => '498',
-    shell      => '/sbin/nologin',
-    home       => '/var/run/cloudera-scm-server',
-    managehome => true,
-    comment    => 'Cloudera Manager'
-  }
-
+class hadoopusers::virtual {
+  @user { 'hue': uid => '1000', gid => '1000', shell => '/bin/false', home => '/usr/share/hue', managehome => true, comment => 'Hue', ensure => present }
+  @user { 'hbase': uid => '1001', gid => '1001', shell => '/bin/false', home => '/var/run/hue', managehome => true, comment => 'HBase', ensure => present }
+  @user { 'oozie': uid => '1002', gid => '1002', shell => '/sbin/nologin', home => '/var/lib/oozie', managehome => true, comment => 'Oozie', ensure => present }
+  @user { 'sqoop2': uid => '1003', gid => '1003', shell => '/bin/false', home => '/var/run/sqoop2', managehome => true, comment => 'Sqoop 2 User', ensure => present }
+  @user { 'hive': uid => '1004', gid => '1004', shell => '/bin/false', home => '/var/lib/hive', managehome => true, comment => 'Hive', ensure => present }
+  @user { 'yarn': uid => '1005', gid => '1005', shell => '/bin/bash', home => '/var/lib/hadoop-yarn', managehome => true, comment => 'Hadoop Yarn', ensure => present }
+  @user { 'sqoop': uid => '1006', gid => '1006', shell => '/bin/false', home => '/var/lib/sqoop', managehome => true, comment => 'Sqoop', ensure => present }
+  @user { 'mapred': uid => '1007', gid => '1007', shell => '/bin/bash', home => '/var/lib/hadoop-mapreduce', managehome => true, comment => 'Hadoop MapReduce', ensure => present }
+  @user { 'httpfs': uid => '1008', gid => '1008', shell => '/bin/bash', home => '/var/run/hadoop-httpfs', managehome => true, comment => 'Hadoop HTTPFS', ensure => present }
+  @user { 'zookeeper': uid => '1009', gid => '1009', shell => '/bin/false', home => '/var/run/zookeeper', managehome => true, comment => 'Zookeeper', ensure => present }
+  @user { 'hdfs': uid => '1010', gid => '1010', shell => '/bin/bash', home => '/var/lib/hadoop-hdfs', managehome => true, comment => 'Hadoop HDFS', ensure => present }
+  @user { 'flume': uid => '1011', gid => '1011', shell => '/bin/false', home => '/var/lib/flume-ng', managehome => true, comment => 'Flume', ensure => present }
 }
 
+class hadoopaccounts {
+  realize(Group['hue'])
+  realize(Group['hbase'])
+  realize(Group['oozie'])
+  realize(Group['sqoop2'])
+  realize(Group['hive'])
+  realize(Group['yarn'])
+  realize(Group['sqoop'])
+  realize(Group['mapred'])
+  realize(Group['httpfs'])
+  realize(Group['zookeeper'])
+  realize(Group['hdfs'])
+  realize(Group['flume'])
+  realize(User['hue'])
+  realize(User['hbase'])
+  realize(User['oozie'])
+  realize(User['sqoop2'])
+  realize(User['hive'])
+  realize(User['yarn'])
+  realize(User['sqoop'])
+  realize(User['mapred'])
+  realize(User['httpfs'])
+  realize(User['zookeeper'])
+  realize(User['hdfs'])
+  realize(User['flume'])
+  } 
+  
 class cloudera::sysctl {
 
   sysctl { 'vm.swappiness': value => '0' }
@@ -264,17 +118,3 @@ class { '::ntp':
   servers  => [ '0.centos.pool.ntp.org', '1.centos.pool.ntp.org', '2.centos.pool.ntp.org' ],
   restrict => ['127.0.0.1'],
 }
-
-#$interval = 3+fqdn_rand(2)
-#cron {"puppet-agent":
-#	   command => "/usr/bin/puppet agent --onetime --no-daemonize --splay --logdest syslog > /dev/null 2>&1",
-#	   ensure  => present,
-#	   user    => root,
-#	   minute  => "*/$interval"
-#}
-# 
-#service {'puppet':
-#	   ensure  => stopped,
-#	   require => Cron["puppet-agent"]
-#}
-
