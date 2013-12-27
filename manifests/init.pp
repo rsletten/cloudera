@@ -224,4 +224,4 @@ class cloudera::hadoopaccounts {
   realize(User['zookeeper'])
   realize(User['hdfs'])
   realize(User['flume'])
-} 
+}
