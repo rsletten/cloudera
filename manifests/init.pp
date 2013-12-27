@@ -197,7 +197,7 @@ class hadoopusers::virtual {
   }
 }
 
-class hadoopaccounts {
+class cloudera::hadoopaccounts {
   require hadoopgroups::virtual
   require hadoopusers::virtual
   realize(Group['hue'])
